@@ -1,0 +1,18 @@
+{
+    "name": "_PerfectHole.V2",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ae35fc7be47daa245af26c8c6dd2e5ac",
+        "GUID:4ad88ba2aae529c4e8f5735fe29cca05",
+        "GUID:444cb344bb9a5ec4a988518745511c7a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
