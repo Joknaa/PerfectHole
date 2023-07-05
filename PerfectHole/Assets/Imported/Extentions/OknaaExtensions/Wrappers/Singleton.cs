@@ -8,11 +8,12 @@ namespace OknaaEXTENSIONS.CustomWrappers {
         private static T _instance;
 
 
-        public virtual void Dispose(){}
+        public virtual void Dispose() {
+            _instance = null;
+        }
         
         private void OnDestroy() {
             Dispose();
-            _instance = null;
         }
     }
 }

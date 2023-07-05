@@ -1,11 +1,12 @@
+using PerfectHole.V2.Systems;
 using UnityEngine;
 
-namespace _Game.Scripts.V2 {
+namespace PerfectHole.V2 {
     public class Hole : MonoBehaviour {
         
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.CompareTag("Triangle")) {
-                Level.RemoveTriangle(other.gameObject);
+                LevelSpawnSystem.RemoveTriangle(other.gameObject);
             }
         }
     }

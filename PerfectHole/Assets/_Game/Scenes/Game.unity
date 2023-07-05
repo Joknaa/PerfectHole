@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1440, y: 2960}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.732
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -360,6 +360,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98064624}
   m_CullTransparentMesh: 1
+--- !u!1 &183675052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183675053}
+  m_Layer: 0
+  m_Name: LevelContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &183675053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183675052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2131801065}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &397781555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +413,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   PlayerBoxInitialPosition: {fileID: 2060723092}
-  TrianglePrefab: {fileID: 7604173095276179727, guid: dc2ffdc3c67aa804f926857d42b69755, type: 3}
+  LevelContainer: {fileID: 0}
+  LevelSegmentPrefab: {fileID: 0}
   PlayerBoxPrefab: {fileID: 7667173212757158774, guid: 815dd47327bb4a443b3b9700f37530ee, type: 3}
   CorrectPositionPrefab: {fileID: 4876858399580311782, guid: 53f915437da340c418a3afb4e7082f41, type: 3}
   Dimensions: {x: 16, y: 16}
@@ -618,6 +650,7 @@ GameObject:
   - component: {fileID: 903625086}
   - component: {fileID: 903625085}
   - component: {fileID: 903625087}
+  - component: {fileID: 903625088}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -677,6 +710,27 @@ MonoBehaviour:
     SerializationNodes: []
   LevelIDText: {fileID: 98064626}
   ReloadButton: {fileID: 884462345}
+--- !u!114 &903625088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903625084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999fb989f36448d82126841294d97f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &1442664945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131801065}
   - component: {fileID: 2131801066}
+  - component: {fileID: 2131801067}
   m_Layer: 0
   m_Name: LevelSpawner
   m_TagString: Untagged
@@ -1100,6 +1155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1747958038}
+  - {fileID: 183675053}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1125,13 +1181,35 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   PlayerBoxInitialPosition: {fileID: 1747958038}
-  TrianglePrefab: {fileID: 7604173095276179727, guid: dc2ffdc3c67aa804f926857d42b69755, type: 3}
+  LevelContainer: {fileID: 183675053}
+  LevelSegmentPrefab: {fileID: 2791795668372336623, guid: dc2ffdc3c67aa804f926857d42b69755, type: 3}
   PlayerBoxPrefab: {fileID: 7667173212757158774, guid: 815dd47327bb4a443b3b9700f37530ee, type: 3}
   CorrectPositionPrefab: {fileID: 4876858399580311782, guid: 53f915437da340c418a3afb4e7082f41, type: 3}
   Dimensions: {x: 16, y: 18}
   MinCorrectPosition: {x: 3, y: 4}
   MaxCorrectPosition: {x: 12, y: 12}
   CellSize: 0.5
+--- !u!114 &2131801067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131801064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54407183a4fd40ae9781698842211fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &2138169353
 GameObject:
   m_ObjectHideFlags: 0

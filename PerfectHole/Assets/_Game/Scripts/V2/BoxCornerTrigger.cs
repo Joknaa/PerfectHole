@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _Game.Scripts.V2 {
+namespace PerfectHole.V2 {
     public class BoxCornerTrigger : MonoBehaviour {
         private PlayerBox _playerBox;
 

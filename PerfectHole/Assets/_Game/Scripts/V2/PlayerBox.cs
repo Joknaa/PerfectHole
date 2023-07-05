@@ -1,6 +1,7 @@
+using PerfectHole.V2.Systems;
 using UnityEngine;
 
-namespace _Game.Scripts.V2 {
+namespace PerfectHole.V2 {
     public class PlayerBox : MonoBehaviour {
         public int CorrectPositionsCount;
 
