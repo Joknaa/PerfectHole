@@ -9,15 +9,14 @@ namespace _Game.Scripts.V2 {
             foreach (var corner in corners) {
                 corner.Init(this);
             }
-            
         }
 
         public void AddCorrectPosition() {
             CorrectPositionsCount++;
 
-            if (CorrectPositionsCount == 4) Level.OnCorrectPositionReached?.Invoke();
+            if (CorrectPositionsCount == 4) LevelSpawnSystem.Instance.GenerateNextLevel();
         }
-        
+
         public void RemoveCorrectPosition() {
             CorrectPositionsCount--;
         }

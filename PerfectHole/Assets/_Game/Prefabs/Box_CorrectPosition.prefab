@@ -230,9 +230,11 @@ GameObject:
   - component: {fileID: 3898259942397243905}
   - component: {fileID: 6940245992015873653}
   - component: {fileID: 2689556112941916024}
+  - component: {fileID: 4876858399133591229}
+  - component: {fileID: 1639421224575812915}
   m_Layer: 0
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 7617133659874423548}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1125, y: 1, z: 1.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4876858399580311770}
@@ -267,7 +269,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7617133659874423548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -334,7 +336,7 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0}
   width: 1
   length: 1
-  height: 1
+  height: 0.6
   widthSegs: 2
   lengthSegs: 2
   heightSegs: 2
@@ -343,6 +345,31 @@ MonoBehaviour:
   UVOffset: {x: 0, y: 0}
   UVTiling: {x: 1, y: 1}
   flipNormals: 0
+--- !u!65 &4876858399133591229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617133659874423548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.9, z: 0.9}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1639421224575812915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617133659874423548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0eae64f9b8844ed9b7ef0f23b3f3d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9120515733116974605
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,14 +397,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9120515733116974605}
-  m_LocalRotation: {x: -0.6532808, y: -0.27059796, z: 0.27059716, w: 0.65328264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.153, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4876858399580311770}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -45, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8973573511369974802
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -457,17 +484,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotOffset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
-  radius1: 0.9
-  radius2: 0.8
-  height: 1
+  rotation: {x: 45, y: 90, z: 90}
+  radius1: 0.8
+  radius2: 0.7
+  height: 0.55
   cap1: 0
-  capThickness1: 0.2
+  capThickness1: 0.00001
   cap2: 0
-  capThickness2: 0.2
+  capThickness2: 0.00001
   sides: 4
-  capSegs: 2
-  heightSegs: 2
+  capSegs: 1
+  heightSegs: 1
   sliceOn: 0
   sliceFrom: 0
   sliceTo: 360

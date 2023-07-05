@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7426448154656615284}
   - component: {fileID: 62044631148986562}
   m_Layer: 0
-  m_Name: Box_Player
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 1185184807949859613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7667173212757158730}
@@ -174,7 +174,7 @@ MonoBehaviour:
   pivotOffset: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   width: 1
-  length: 1
+  length: 0.5
   height: 1
   widthSegs: 1
   lengthSegs: 1
@@ -420,10 +420,10 @@ GameObject:
   - component: {fileID: 7667173212757158730}
   - component: {fileID: 7667173212757158731}
   - component: {fileID: 7667173212757158772}
-  - component: {fileID: 7667173212757158773}
   - component: {fileID: 987870818}
-  - component: {fileID: 987870819}
   - component: {fileID: 6715195298993277271}
+  - component: {fileID: -539835778027419369}
+  - component: {fileID: 1297018826}
   m_Layer: 0
   m_Name: Box_Player
   m_TagString: Untagged
@@ -439,8 +439,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7667173212757158774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 5.5, z: 0}
-  m_LocalScale: {x: 1.217702, y: 1.217702, z: 1.217702}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6459173170911546290}
@@ -501,31 +501,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7667173212757158773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7667173212757158774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600c3acc9f946fc49b6a295c9bb36bc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pivotOffset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
-  width: 1
-  length: 1
-  height: 1
-  widthSegs: 1
-  lengthSegs: 1
-  heightSegs: 1
-  generateMappingCoords: 1
-  realWorldMapSize: 0
-  UVOffset: {x: 0, y: 0}
-  UVTiling: {x: 1, y: 1}
-  flipNormals: 0
 --- !u!54 &987870818
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -542,20 +517,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!64 &987870819
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7667173212757158774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &6715195298993277271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,3 +530,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CorrectPositionsCount: 0
+--- !u!65 &-539835778027419369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667173212757158774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1297018826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667173212757158774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d14f789f638894e8adb65de1c75806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pivotOffset: {x: 0, y: 0, z: 0}
+  rotation: {x: 45, y: 90, z: 90}
+  radius1: 0.8
+  radius2: 0.7
+  height: 0.55
+  cap1: 0
+  capThickness1: 0.00001
+  cap2: 0
+  capThickness2: 0.00001
+  sides: 4
+  capSegs: 1
+  heightSegs: 1
+  sliceOn: 0
+  sliceFrom: 0
+  sliceTo: 360
+  generateMappingCoords: 1
+  realWorldMapSize: 0
+  UVOffset: {x: 0, y: 0}
+  UVTiling: {x: 1, y: 1}
+  flipNormals: 0
+  smooth: 1

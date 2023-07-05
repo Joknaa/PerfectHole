@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "2454626f",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "2454626f",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 25347,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,6 +13,12 @@
             "name": "com.miui.home",
             "processId": 6995,
             "exited": true
+        },
+        {
+            "deviceId": "2454626f",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 25347,
+            "exited": false
         }
     ],
     "m_Tags": {
