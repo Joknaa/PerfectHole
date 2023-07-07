@@ -16,11 +16,12 @@ namespace PerfectHole.V2.Systems {
             Debug.DrawRay(ray.origin, ray.direction * 3, Color.yellow);
             if (!Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit)) return;
 
-            var hitObject = hit.transform;
-            if (hitObject.gameObject.layer != LayerMask.NameToLayer("Level")) return;
+            var hitObject = hit.transform.gameObject;
+            if (hitObject.layer != LayerMask.NameToLayer("Level")) return;
             
-            LevelSpawnSystem.RemoveTriangle(hitObject.parent.gameObject);
+            LevelSpawnSystem.RemoveTriangle(hitObject);
         }
+        
 
     
 

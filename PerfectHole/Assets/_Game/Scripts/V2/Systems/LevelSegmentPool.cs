@@ -14,7 +14,7 @@ namespace PerfectHole.V2.Systems {
         public static void Init() {
             if (_isInit) return;
             _pooledObjects.Clear();
-            _originalPrefab = LevelSpawnSystem.Instance.LevelSegmentPrefab;
+            _originalPrefab = LevelSpawnSystem.Instance._levelSegmentPrefab;
             _pool = new ObjectPool<LevelSegment>(
                 OnCreate,
                 OnGet,

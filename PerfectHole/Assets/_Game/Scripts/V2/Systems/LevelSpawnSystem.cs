@@ -16,46 +16,38 @@ namespace PerfectHole.V2.Systems {
         public Transform LevelContainer;
 
         [Title("Prefabs", TitleAlignment = TitleAlignments.Centered)]
-        public LevelSegment LevelSegmentPrefab;
-
-        public GameObject PlayerBoxPrefab;
+        public LevelSegment _levelSegmentPrefab;
+        public PlayerBox PlayerBoxPrefab;
         public GameObject CorrectPositionPrefab;
 
         [Title("Generation Params", TitleAlignment = TitleAlignments.Centered)]
         public Vector2Int Dimensions;
-
         public Vector2Int MinCorrectPosition;
         public Vector2Int MaxCorrectPosition;
-
         public float CellSize;
 
-        private List<LevelSegment> _levelSegments = new List<LevelSegment>();
-        List<Task> _tasks = new List<Task>();
+        private List<LevelSegment> _cellSegments = new List<LevelSegment>();
         private Coroutine _coroutine;
-        private GameObject _playerBoxInstance;
+        private PlayerBox _playerBoxInstance;
         private GameObject _correctPositionInstance;
         private int _levelID;
-        private bool _isInitialLevel;
+        [SerializeField] private bool _isInitialLevel;
 
         public void Init() {
             _levelID = 0;
             _isInitialLevel = true;
             GenerateNextLevel();
+            _playerBoxInstance.Init();
         }
 
         public void GenerateNextLevel() => GenerateLevel();
-
-        public void ReloadLevel() {
-            // GameManager.Instance.Reset();
-            _isInitialLevel = false;
-            GenerateLevel(true);
-        }
+        public void ReloadLevel() => GenerateLevel(true);
 
 
         [Button("Generate Level", ButtonSizes.Large), PropertySpace(20, 0)]
         private void GenerateLevel(bool reload = false) {
-            if (_levelSegments.Count > 0) {
-                foreach (var segment in _levelSegments) {
+            if (_cellSegments.Count > 0) {
+                foreach (var segment in _cellSegments) {
                     segment.SetActive(true);
                 }
             }
@@ -63,7 +55,7 @@ namespace PerfectHole.V2.Systems {
             if (_playerBoxInstance != null) Destroy(_playerBoxInstance);
             if (_coroutine != null) StopCoroutine(_coroutine);
 
-            if (!reload) {
+            if (reload == false) {
                 if (_correctPositionInstance != null) Destroy(_correctPositionInstance);
                 _correctPositionInstance = Instantiate(CorrectPositionPrefab, LevelContainer);
                 SetupInstance(_correctPositionInstance.transform, GetRandomCorrectPosition(), "CorrectPosition");
@@ -77,23 +69,40 @@ namespace PerfectHole.V2.Systems {
             _playerBoxInstance.name = "PlayerBox";
 
             _levelID++;
-            OnLevelGenerated?.Invoke(_levelID);
+            if (reload == false) OnLevelGenerated?.Invoke(_levelID);
         }
 
         private IEnumerator GenerateSegments() {
-            for (int i = 0; i < Dimensions.x; i++) {
-                for (int j = 0; j < Dimensions.y; j++) {
-                    var TriangleInstance = LevelSegmentPool.Get();
-                    SetupInstance(TriangleInstance.transform, new Vector2(i * CellSize, j * CellSize), $"Triangle_{i}_{j}", CellSize);
-                    if (_isInitialLevel) _levelSegments.Add(TriangleInstance);
+            _isInitialLevel = false;
 
-                    TriangleInstance = LevelSegmentPool.Get();
-                    SetupInstance(TriangleInstance.transform, new Vector2((i + 1) * CellSize, (j + 1) * CellSize), $"Triangle_{i}_{j}_inverted", CellSize, true);
-                    if (_isInitialLevel) _levelSegments.Add(TriangleInstance);
-                }
-            }
+            // GenerateTriangles();
+            GenerateCubes();
 
             yield return null;
+
+
+            void GenerateTriangles() {
+                for (int i = 0; i < Dimensions.x; i++) {
+                    for (int j = 0; j < Dimensions.y; j++) {
+                        var TriangleInstance = LevelSegmentPool.Get();
+                        SetupInstance(TriangleInstance.transform, new Vector2(i * CellSize, j * CellSize), $"Triangle_{i}_{j}", CellSize);
+                        _cellSegments.Add(TriangleInstance);
+
+                        TriangleInstance = LevelSegmentPool.Get();
+                        SetupInstance(TriangleInstance.transform, new Vector2((i + 1) * CellSize, (j + 1) * CellSize), $"Triangle_{i}_{j}_inverted", CellSize, true);
+                        _cellSegments.Add(TriangleInstance);
+                    }
+                }
+            }
+            void GenerateCubes() {
+                for (int i = 0; i < Dimensions.x; i++) {
+                    for (int j = 0; j < Dimensions.y; j++) {
+                        var cubeInstance = LevelSegmentPool.Get();
+                        SetupInstance(cubeInstance.transform, new Vector2(i * CellSize, j * CellSize), $"Cube_{i}_{j}", CellSize);
+                        _cellSegments.Add(cubeInstance);
+                    }
+                }
+            }
         }
 
         private void SetupInstance(Transform instance, Vector2 position, string name, float scale = 1, bool rotate = false) {
@@ -107,10 +116,10 @@ namespace PerfectHole.V2.Systems {
         [Button("Clear Level", ButtonSizes.Large)]
         private void ClearLevel() {
 
-            foreach (var segment in _levelSegments.Where(segment => segment != null)) {
+            foreach (var segment in _cellSegments.Where(segment => segment != null)) {
                 DestroyImmediate(segment);
             }
-            _levelSegments.Clear();
+            _cellSegments.Clear();
 
             if (_playerBoxInstance != null) DestroyImmediate(_playerBoxInstance);
             if (_correctPositionInstance != null) DestroyImmediate(_correctPositionInstance);
@@ -136,6 +145,6 @@ namespace PerfectHole.V2.Systems {
         }
 
         // public static void RemoveTriangle(GameObject triangle) => LevelSegmentPool.Release(triangle.GetComponentInParent<LevelSegment>());
-        public static void RemoveTriangle(GameObject triangle) => triangle.GetComponentInParent<LevelSegment>().SetActive(false);
+        public static void RemoveTriangle(GameObject triangle) => triangle.GetComponent<LevelSubSegment>().SetActive(false);
     }
 }

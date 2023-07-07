@@ -74,6 +74,7 @@ namespace MobileInputSystem {
 
             if (Input.GetMouseButton(0)) {
                 if (startPosition == Vector3.zero) return;
+                if (startPosition == Input.mousePosition) return;
 
                 endPosition = Input.mousePosition;
                 deltaPosition = endPosition - startPosition;
