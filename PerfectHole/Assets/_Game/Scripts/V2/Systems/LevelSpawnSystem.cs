@@ -52,7 +52,10 @@ namespace PerfectHole.V2.Systems {
                 }
             }
 
-            if (_playerBoxInstance != null) Destroy(_playerBoxInstance);
+            if (_playerBoxInstance != null) {
+                Destroy(_playerBoxInstance.gameObject);
+                print("PlayerBox Destroyed");
+            }
             if (_coroutine != null) StopCoroutine(_coroutine);
 
             if (reload == false) {
@@ -67,6 +70,7 @@ namespace PerfectHole.V2.Systems {
             _playerBoxInstance = Instantiate(PlayerBoxPrefab, PlayerBoxInitialPosition.position, PlayerBoxPrefab.transform.rotation, LevelContainer);
             _playerBoxInstance.transform.SetSiblingIndex(0);
             _playerBoxInstance.name = "PlayerBox";
+            _playerBoxInstance.Init();
 
             _levelID++;
             if (reload == false) OnLevelGenerated?.Invoke(_levelID);
